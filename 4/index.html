@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>More VueJS Features</title>
+</head>
+
+<body>
+	<div id="app">
+		<h1 v-if="day === 'Tuesday'">Salaasa</h1>
+		<h1 v-else-if="day === 'Wednesday'">Arbaca</h1>
+		<h1 v-else-if="day === 'Saturday'">Sabti</h1>
+		<h1 v-else-if="day === 'Sunday'">Axad</h1>
+		<h1 v-else>Lama garanayo!</h1>
+
+		<input placeholder="Enter day name" v-model="day">
+
+		<div v-for="(note, index) in notes">
+			<h4 style="display: inline;">{{ note }}</h4>
+			<button @click="removeNote(index)">Done</button>
+		</div>
+
+		<div style="background-color: red; padding: 40px;" v-if="isVisible">This is here! {{ isVisible }}</div>
+
+		<button @click="isVisible = !isVisible">Show container</button>
+	</div>
+
+	<script src="vue.js"></script>
+	<script src="main.js"></script>
+</body>
+
+</html>
