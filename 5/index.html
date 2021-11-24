@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Students System</title>
+
+	<link rel="stylesheet" href="assets/tailwind.min.css">
+</head>
+
+<body class="bg-gray-200">
+	<div id="app">
+
+		<div class="w-2/3 mx-auto bg-white shadow-lg rounded-lg mt-4 p-4">
+			<h4 class="text-2xl text-center">Grading System</h4>
+
+			<div class="mt-8 flex space-x-2">
+				<input class="outline-none px-4 py-2 ring-1 focus:ring" placeholder="Search">
+
+				<button type="button" @click="isAdding = true"
+					class="bg-purple-700 text-white px-4 py-2 uppercase hover:bg-purple-600 transition rounded">Add</button>
+			</div>
+
+			<div class="mt-8" v-if="!isAdding">
+
+				<table class="table w-full">
+					<thead>
+						<tr class="uppercase">
+							<th class="border border-gray-300 p-2">Id</th>
+							<th class="border border-gray-300 p-2">Name</th>
+							<th class="border border-gray-300 p-2">Grade</th>
+						</tr>
+					</thead>
+
+					<tbody class="text-center">
+						<tr v-for="student in students">
+							<td class="border border-gray-300 p-2">{{ student.id }}</td>
+							<td class="border border-gray-300 p-2">{{ student.name }}</td>
+							<td class="border border-gray-300 p-2">
+								<span v-if="student.grade >= 50">{{ student.grade }}</span>
+								<span v-else class="text-red-600">{{ student.grade }}</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+			<div v-else class="mt-8">
+
+				<div class="flex gap-2">
+					<input type="number" v-model="id" class="outline-none px-4 py-2 ring-1 focus:ring" placeholder="Student Id">
+					<input type="text" v-model="name" class="outline-none px-4 py-2 ring-1 focus:ring" placeholder="Student Name">
+					<input type="number" v-model="grade" class="outline-none px-4 py-2 ring-1 focus:ring" placeholder="Grade">
+
+					<button type="submit" @click="save"
+						class="bg-green-700 text-white px-4 py-2 uppercase hover:bg-green-600 transition rounded">save</button>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<script src="assets/vue.js"></script>
+	<script src="main.js"></script>
+</body>
+
+</html>
